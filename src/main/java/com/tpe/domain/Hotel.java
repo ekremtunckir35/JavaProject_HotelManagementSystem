@@ -16,8 +16,11 @@ public class Hotel {
 
     @Column(nullable = false)
     private  String location;
+    //A oteli odaları:11,12,13
+    //oda listesinden 11 i çıkarsam:12,13-->room tablosunda kalmaya devam etsin
 
-    @OneToOne// to do -->iliski daha sonra duzenlenecek
+    //orphanremoval:11 i tablodan da silerdi
+    @OneToMany(mappedBy = "hotel")// to do -->iliski daha sonra duzenlenecek
     private List<Room>rooms = new ArrayList<>();
 
     public Hotel() {
