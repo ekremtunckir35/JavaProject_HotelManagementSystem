@@ -5,21 +5,19 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Address {
 
-       private String street;
-         private String city;
-            private String country;
-            private String zipCode;
+    private String street;
+    private String city;
+    private String country;
+    private String zipcode;
 
     public Address() {
-
-
     }
 
-    public Address(String street, String city, String country, String zipCode) {
+    public Address(String street, String city, String country, String zipcode) {
         this.street = street;
         this.city = city;
         this.country = country;
-        this.zipCode = zipCode;
+        this.zipcode = zipcode;
     }
 
     public String getStreet() {
@@ -46,12 +44,12 @@ public class Address {
         this.country = country;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getZipcode() {
+        return zipcode;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 
     @Override
@@ -60,7 +58,7 @@ public class Address {
                 "street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
-                ", zipCode='" + zipCode + '\'' +
+                ", zipcode='" + zipcode + '\'' +
                 '}';
     }
 }

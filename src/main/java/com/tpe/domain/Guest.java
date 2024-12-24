@@ -8,19 +8,21 @@ import java.util.List;
 @Entity
 @Table(name = "t_guest")
 public class Guest {
-      @Id
-      @GeneratedValue(strategy = GenerationType.AUTO)
-     private Long id;
-     @Column(nullable = false)
-     private String name;
 
-     private LocalDateTime createDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-     @OneToMany(mappedBy = "guest", orphanRemoval = true)
-     private List<Reservation> reservation = new ArrayList<>();
+    @Column(nullable = false)
+    private String name;
 
-     @Embedded
-     private Address address;
+    private LocalDateTime createDate;
+
+    @OneToMany(mappedBy = "guest",orphanRemoval = true)
+    private List<Reservation> reservations=new ArrayList<>();
+
+    @Embedded//opsiyonel
+    private Address address;
 
     public Long getId() {
         return id;
@@ -41,17 +43,18 @@ public class Guest {
     public LocalDateTime getCreateDate() {
         return createDate;
     }
-     @PrePersist
+
+    @PrePersist
     public void setCreateDate() {
-        this.createDate =LocalDateTime.now();
+        this.createDate = LocalDateTime.now();
     }
 
-    public List<Reservation> getReservation() {
-        return reservation;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setReservation(List<Reservation> reservation) {
-        this.reservation = reservation;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public Address getAddress() {

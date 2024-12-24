@@ -17,14 +17,14 @@ public class Room {
     @Column(nullable = false)
     private Integer capacity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)//örnek
     @JoinColumn(nullable = false)
-    private Hotel hotel;//bu oda hangi otelin
+    private Hotel hotel;//bu oda hangi otelin:ID
 
     //oda rez list:1,2,3
     //rez. list 1 id li olanı çıkardım:tablodan silelim
 
-    @OneToMany(mappedBy = "room", orphanRemoval = true)
+    @OneToMany(mappedBy = "room",orphanRemoval = true)
     private List<Reservation> reservations=new ArrayList<>();
 
     public Room() {
@@ -83,8 +83,5 @@ public class Room {
                 ", number='" + number + '\'' +
                 ", capacity=" + capacity +
                 '}';
-    }
-
-    public void setRoomId(int i) {
     }
 }

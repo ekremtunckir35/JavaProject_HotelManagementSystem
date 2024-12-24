@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="t_hotel")
+@Table(name = "t_hotel")
 public class Hotel {
 
     @Id
@@ -15,16 +15,18 @@ public class Hotel {
     private String name;
 
     @Column(nullable = false)
-    private  String location;
+    private String location;
+
     //A oteli odaları:11,12,13
     //oda listesinden 11 i çıkarsam:12,13-->room tablosunda kalmaya devam etsin
 
-    //orphanremoval:11 i tablodan da silerdi
-    @OneToMany(mappedBy = "hotel")// to do -->iliski daha sonra duzenlenecek
-    private List<Room>rooms = new ArrayList<>();
+    ///orphanremoval:11 i tablodan da silerdi
+    @OneToMany(mappedBy = "hotel",cascade = CascadeType.REMOVE,fetch =FetchType.EAGER)//ilişki diğer tarafta sağlanacak
+    private List<Room> rooms=new ArrayList<>();
 
     public Hotel() {
     }
+
     public Hotel(Long id, String name, String location) {
         this.id = id;
         this.name = name;

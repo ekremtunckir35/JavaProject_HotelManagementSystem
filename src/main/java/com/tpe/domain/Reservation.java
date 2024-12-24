@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "t_reservation")
 public class Reservation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,12 +21,11 @@ public class Reservation {
     @JoinColumn(nullable = false)
     private Guest guest;
 
-    @ManyToOne
+    @ManyToOne//eager
     @JoinColumn(nullable = false)
     private Room room;
 
-    //getter and setter methods
-
+    //getter-setter
     public Long getId() {
         return id;
     }
@@ -64,7 +65,6 @@ public class Reservation {
     public void setRoom(Room room) {
         this.room = room;
     }
-     //toString method
 
     @Override
     public String toString() {
